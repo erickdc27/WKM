@@ -1,61 +1,93 @@
-# 🚀 Getting started with Strapi
+# Desafio Tecnico - Working Minds
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Projeto desenvolvido como parte de um processo seletivo para Working Minds.
+No backend, foi utilizado o CMS Strapi V5, que facilita a criação e gestão de conteúdo através de uma API RESTful, utilizada para o cadastro e gerenciamento de pessoas, incluindo informações como nome, email, cidade e estado.
 
-### `develop`
+## Tecnologias Utilizadas
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+- Next.js - Framework React para renderização SSR e SSG.
+- TypeScript - Adiciona tipagem estática.
+- Tailwind - Estilização utility first CSS.
+- Zod - Biblioteca para validação e definição de esquemas com foco em TypeScript.
+- Strapi v5 - CMS headless que facilita a criação e gestão de conteúdo.
+- Docker - Plataforma de containerização que simplifica a criação, distribuição e execução de aplicações em ambientes isolados.
 
+## Instalação e Execução
+
+# Pré-requisitos
+
+- Node.js (16 ou superior)
+- npm
+- PostgreSQL (instalado e em execução)
+
+# Inicialização
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/erickdc27/WKM.git
+cd WKM
 ```
+2. **Instale as dependências:**
+```bash
+npm install
+```
+3. **Configure as variáveis de ambiente:**
+```bash
+Crie um arquivo .env na raiz do projeto e utilize o conteúdo do arquivo .env.example
+obs: Adicione as variáveis necessárias para a conexão com o seu Banco de Dados Postgresql instalado localmente e em execução.
+```
+4. *Inicie a aplicação:*
+```bash
 npm run develop
-# or
-yarn develop
 ```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
+5. *Acesse o painel de administração do Strapi:*
+```bash
+Abra o navegador e acesse o caminho http://localhost:1337/admin para criar o seu AdminMaster e poder gerenciar os dados dos modelos criados.
 ```
-npm run start
-# or
-yarn start
+6. *Liberação do acesso público das APIs necessárias para cadastro:*
+```bash
+Acesse o caminho Settings/Users & Permissions Plugin/Roles/Public e selecione a opção "all" do campo "permissions" para cada modelo/API (Cidade, Estado, Pessoa).
 ```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
+7. *Criação de Estados e Cidades para testar a aplicação:*
+```bash
+Acesse a aba "Content Manager" e selecione os collections type "Estado" e "Cidade" para criar um novo registro de entrada, podendo associá-los facil e intuitivamente.
 ```
-npm run build
-# or
-yarn build
-```
+# Se preferir, pode utilizar as Rotas no Insomnia/Postman
 
-## ⚙️ Deployment
+As rotas para acessar os recursos são as seguintes:
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+# **Endpoints**
 
-```
-yarn strapi deploy
-```
+- **Estados**: `http://localhost:1337/api/estados`
+- **Cidades**: `http://localhost:1337/api/cidades`
+- **Pessoas**: `http://localhost:1337/api/pessoas`
 
-## 📚 Learn more
+# ** Exemplos de Métodos de Requisição**
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+- **GET**: Para listar todos os registros
+- **POST**: Para criar novos registros
+- **GET**: `http://localhost:1337/api/estados/:id` (o id se trata do campo `documentId` na response) - Para listar registros específicos
+- **PUT**: `http://localhost:1337/api/estados/:id` (o id se trata do campo `documentId` na response) - Para atualizar registros específicos
+- **DELETE**: `http://localhost:1337/api/estados/:id` (o id se trata do campo `documentId` na response) - Para deletar registros específicos
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+## Descrição do Backend
 
-## ✨ Community
+Este projeto backend foi desenvolvido utilizando o Strapi V5 e possui os seguintes recursos:
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+1. **Modelos Criados**:
 
----
+   - **Estado**: Representa as unidades federativas do Brasil.
+   - **Cidade**: Representa as cidades, associadas a seus respectivos estados.
+   - **Pessoa**: Representa os indivíduos, que podem ser associados a cidades.
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+2. **Configuração dos Modelos**:
+
+   - Os modelos foram configurados para atender às regras do formulário, garantindo a integridade dos dados e a correta relação entre os diferentes modelos.
+
+3. **Restrições de Exclusão - Controllers**:
+
+   - **Cidade**: Não pode ser removida se houver uma pessoa associada a ela, evitando a perda de informações referenciadas.
+   - **Estado**: Não pode ser removido se houver uma cidade associada a ele, garantindo que as hierarquias de localização sejam mantidas.
+
+4. **Acesso às APIs**:
+   - As APIs necessárias para o cadastro e gerenciamento dos modelos (Estado, Cidade, Pessoa) estão acessíveis publicamente, permitindo que usuários e sistemas externos interajam com os dados de forma segura e controlada.

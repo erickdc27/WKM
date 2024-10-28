@@ -25,6 +25,8 @@ No backend, foi utilizado o CMS Strapi V5, que facilita a criação e gestão de
 ### 1. Clone o repositório:
 ```bash
 git clone https://github.com/erickdc27/wkm-api.git
+```
+```bash
 cd wkm-api
 ```
 ### 2. Instale as dependências:

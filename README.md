@@ -45,7 +45,7 @@ docker ps
 ```
 
 ### 4. Confirme a conexão com o Banco de Dados (opcional)
-Caso esteja com o programa Beekeeper Studio instalado, sugiro que teste se a conexão do seu Docker container com o Banco de Dado da image postgres foi realizada com sucesso
+Caso esteja com o programa Beekeeper Studio instalado, sugiro que teste se a conexão do seu Docker container com o Banco de Dado da image postgres foi realizada com sucesso.
 Pode fazer isso rapidamente através do seguinte passo a passo:
 - abra o programa Beekeeper Studio
 - em "new conection", selecione a opção "postgres"

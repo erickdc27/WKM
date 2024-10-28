@@ -12,57 +12,51 @@ No backend, foi utilizado o CMS Strapi V5, que facilita a criação e gestão de
 - Strapi v5 - CMS headless que facilita a criação e gestão de conteúdo.
 - Docker - Plataforma de containerização que simplifica a criação, distribuição e execução de aplicações em ambientes isolados.
 
-## Instalação e Execução
+# Instalação e Execução
 
-# Pré-requisitos
+## Pré-requisitos
 
 - Node.js (16 ou superior)
 - npm
 - PostgreSQL (instalado e em execução)
 
-# Inicialização
+## Passo a passo para executar o projeto
 
-1. **Clone o repositório:**
+### 1. Clone o repositório:
 ```bash
-git clone https://github.com/erickdc27/WKM.git
-cd WKM
+git clone https://github.com/erickdc27/wkm-api.git
+cd wkm-api
 ```
-2. **Instale as dependências:**
+### 2. Instale as dependências:
 ```bash
 npm install
 ```
-3. **Configure as variáveis de ambiente:**
-```bash
+### 3. Configure as variáveis de ambiente:
 Crie um arquivo .env na raiz do projeto e utilize o conteúdo do arquivo .env.example
-obs: Adicione as variáveis necessárias para a conexão com o seu Banco de Dados Postgresql instalado localmente e em execução.
-```
-4. *Inicie a aplicação:*
+obs: Adicione as variáveis necessárias para a conexão com o seu Banco de Dados instalado localmente e em execução (sugestão - postgres)
+
+### 4. Inicie a aplicação:
 ```bash
 npm run develop
 ```
-5. *Acesse o painel de administração do Strapi:*
-```bash
-Abra o navegador e acesse o caminho http://localhost:1337/admin para criar o seu AdminMaster e poder gerenciar os dados dos modelos criados.
-```
-6. *Liberação do acesso público das APIs necessárias para cadastro:*
-```bash
+### 5. Acesse o painel de administração do Strapi:
+Abra o navegador e acesse o caminho http://localhost:1337/admin para criar o seu Super Admin e poder gerenciar os dados dos modelos criados.
+
+### 6. Liberação do acesso público das APIs necessárias para cadastro:
 Acesse o caminho Settings/Users & Permissions Plugin/Roles/Public e selecione a opção "all" do campo "permissions" para cada modelo/API (Cidade, Estado, Pessoa).
-```
-7. *Criação de Estados e Cidades para testar a aplicação:*
-```bash
-Acesse a aba "Content Manager" e selecione os collections type "Estado" e "Cidade" para criar um novo registro de entrada, podendo associá-los facil e intuitivamente.
-```
-# Se preferir, pode utilizar as Rotas no Insomnia/Postman
 
-As rotas para acessar os recursos são as seguintes:
+### 7. Criação de Estados e Cidades para testar a aplicação:
+Acesse a aba "Content Manager" e selecione os collections type "Estado" e "Cidade" para criar novos registros de entrada, podendo associá-los facil e intuitivamente.
 
-# **Endpoints**
+ou
+
+### Se preferir, também pode utilizar as Rotas no Insomnia/Postman, através dos seguintes endpoints:
 
 - **Estados**: `http://localhost:1337/api/estados`
 - **Cidades**: `http://localhost:1337/api/cidades`
 - **Pessoas**: `http://localhost:1337/api/pessoas`
 
-# ** Exemplos de Métodos de Requisição**
+### ** Exemplos de Métodos de Requisição**
 
 - **GET**: Para listar todos os registros
 - **POST**: Para criar novos registros
@@ -72,22 +66,22 @@ As rotas para acessar os recursos são as seguintes:
 
 ## Descrição do Backend
 
-Este projeto backend foi desenvolvido utilizando o Strapi V5 e possui os seguintes recursos:
+Este projeto teve o seu backend desenvolvido utilizando o Strapi V5 e possui os seguintes recursos:
 
-1. **Modelos Criados**:
+### 1. Modelos Criados:
 
    - **Estado**: Representa as unidades federativas do Brasil.
    - **Cidade**: Representa as cidades, associadas a seus respectivos estados.
    - **Pessoa**: Representa os indivíduos, que podem ser associados a cidades.
 
-2. **Configuração dos Modelos**:
+### 2. Configuração dos Modelos:
 
    - Os modelos foram configurados para atender às regras do formulário, garantindo a integridade dos dados e a correta relação entre os diferentes modelos.
 
-3. **Restrições de Exclusão - Controllers**:
+### 3. Restrições de Exclusão - Controllers:
 
    - **Cidade**: Não pode ser removida se houver uma pessoa associada a ela, evitando a perda de informações referenciadas.
    - **Estado**: Não pode ser removido se houver uma cidade associada a ele, garantindo que as hierarquias de localização sejam mantidas.
 
-4. **Acesso às APIs**:
+### 4. Acesso às APIs:
    - As APIs necessárias para o cadastro e gerenciamento dos modelos (Estado, Cidade, Pessoa) estão acessíveis publicamente, permitindo que usuários e sistemas externos interajam com os dados de forma segura e controlada.

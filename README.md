@@ -50,10 +50,9 @@ Pode fazer isso rapidamente através do seguinte passo a passo:
 - abra o programa Beekeeper Studio
 - em "new conection", selecione a opção "postgres"
 - verifique se o campo "port" está preenchido com "5432"
-- preencha o campo User com "postgres" e o campo Password com "1720"
-- clique no botão "connect"
-Se não acusar nenhum erro e a conexão ocorrer normalmente, significa que tudo está certo e funcionando
-Obs: antes de realizar esse teste, certifique-se de que o postgres server não está em execução na sua maquina, pois ele já estará ocupando a porta 5432 e impedirá a conexão criada através do Docker
+- preencha o campo User com "postgres" e o campo Password com "1720", depois clique no botão "connect"
+- Se não acusar nenhum erro e a conexão ocorrer normalmente, significa que tudo está certo e funcionando
+- Obs: antes de realizar esse teste, certifique-se de que o postgres server não está em execução na sua maquina, pois ele já estará ocupando a porta 5432 e impedirá a conexão criada através do Docker
 
 ### 5. Configure as variáveis de ambiente:
 Crie um arquivo .env na raiz deste diretorio `/wkm-api`

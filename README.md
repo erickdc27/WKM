@@ -42,7 +42,7 @@ obs: Adicione as variáveis necessárias para a conexão com o seu Banco de Dado
 npm run develop
 ```
 ### 5. Acesse o painel de administração do Strapi:
-Abra o navegador e acesse o caminho http://localhost:1337/admin para criar o seu Super Admin e poder gerenciar os dados dos modelos criados.
+Abra o navegador e acesse o caminho `http://localhost:1337/admin` para criar o seu Super Admin e poder gerenciar os dados dos modelos criados.
 
 ### 6. Liberação do acesso público das APIs necessárias para cadastro:
 Acesse o caminho Settings/Users & Permissions Plugin/Roles/Public e selecione a opção "all" do campo "permissions" para cada modelo/API (Cidade, Estado, Pessoa).
